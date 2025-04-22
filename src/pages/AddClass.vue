@@ -8,11 +8,10 @@ import {ref} from 'vue';
 import {useRouter} from 'vue-router';
 const router=useRouter();
 const lopmoi=ref('');
-//eslint-disable-next-line no-undef
-const props=defineProps(['themlop'])
+import {themlop} from '../useInfor';
 const luu=()=>{
     if(lopmoi.value!==''){
-        props.themlop(lopmoi.value);
+        themlop(lopmoi.value);
         lopmoi.value='';
         router.push('/admin/classlist');
     }else{

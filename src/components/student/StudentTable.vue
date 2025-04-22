@@ -13,7 +13,7 @@
                     <td>{{ student.age }}</td>
                     <td>{{ student.lop }}</td>
                     <td>
-                        <StudentAction :suahocsinh="props.suahocsinh" :xoahocsinh="props.xoahocsinh" :student="student"></StudentAction>
+                        <StudentAction :student="student"></StudentAction>
                     </td>
                 </tr>
             </template>
@@ -26,7 +26,7 @@
 <script setup>
 import StudentAction from './tools/StudentAction.vue';
 //eslint-disable-next-line no-undef
-const props=defineProps(['flatInfor','search','xoahocsinh','suahocsinh'])
+const props=defineProps(['flatInfor','search'])
 import {computed,ref} from 'vue';
 const PageSize=5;
 const currentPage=ref(0);

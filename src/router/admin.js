@@ -10,6 +10,7 @@ const routes=[
     {path:'/',redirect:'/admin'},
     {
         path:'/admin',
+        redirect:'/admin/studentlist',
         component:AdminLayout,
         children:[
             {

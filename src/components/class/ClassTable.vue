@@ -10,7 +10,7 @@
                 <tr>
                     <td>{{ lop.index+1 }}</td> <td>{{ lop.lop }}</td>
                     <td>
-                        <ClassAction :lop="lop" :sualop="props.sualop" :xoalop="props.xoalop"></ClassAction>
+                        <ClassAction :lop="lop" :sualop="sualop" :xoalop="xoalop"></ClassAction>
                     </td>
                 </tr>
             </template>
@@ -24,7 +24,8 @@
 import {ref,computed} from 'vue';
 import ClassAction from './tools/ClassAction.vue'
 //eslint-disable-next-line no-undef
-const props=defineProps(['flatInfor','xoalop','sualop'])
+const props=defineProps(['flatInfor'])
+import {sualop,xoalop} from '../../useInfor.js';
 const PageSize=5;
 const currentPage=ref(0);
 const paginateData=computed(()=>{

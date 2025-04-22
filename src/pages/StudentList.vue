@@ -1,17 +1,16 @@
 <template>
     <h2>Đây là nơi để danh sách học sinh</h2>
     <button @click="Themhocsinh">Thêm Học Sinh</button>
-    <StudentSearch @timkiem="timkiem" :infor="infor"></StudentSearch>
-    <StudentTable :search="trangthaitimkiem" :flatInfor="flatInfor" :suahocsinh="props.suahocsinh" :xoahocsinh="props.xoahocsinh"></StudentTable>
+    <StudentSearch @timkiem="timkiem" ></StudentSearch>
+    <StudentTable :search="trangthaitimkiem" :flatInfor="flatInfor" ></StudentTable>
 </template>    
 <script setup>
 import StudentTable from '../components/student/StudentTable.vue';
 import StudentSearch from '../components/student/StudentSearch.vue';
 import {computed,reactive} from 'vue'
 import {useRouter} from 'vue-router'
-//eslint-disable-next-line no-undef
-const props=defineProps(['infor','xoahocsinh','suahocsinh'])
-const flatInfor=computed(()=>props.infor.flatMap((caclop,index)=>
+import {infor} from '../useInfor.js';
+const flatInfor=computed(()=>infor.flatMap((caclop,index)=>
     caclop.students.map((student,index1)=>({
         lop:caclop.lop,
         name:student.name,
