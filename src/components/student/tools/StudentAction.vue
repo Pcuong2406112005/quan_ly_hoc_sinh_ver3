@@ -15,6 +15,7 @@ import {ref,reactive} from 'vue';
 //eslint-disable-next-line no-undef
 const props=defineProps(['student']);
 import { suahocsinh,xoahocsinh } from '@/useInfor';
+import { nameValidate,ClassValidate,ageValidate } from './validateStudent.js';
 const trangthai=ref('sua');
 const NewStudent=reactive({
     name:'',age:null,lop:''
@@ -24,11 +25,15 @@ const Sua=()=>{
 }
 const luu=()=>{
     if(NewStudent.name!==''&&NewStudent.age!==null&&NewStudent.lop!==''){
+        if(nameValidate(NewStudent.name)&&ageValidate(NewStudent.age)&&ClassValidate(NewStudent.lop)){
         suahocsinh(props.student.index,props.student.index1,NewStudent.name,NewStudent.age,NewStudent.lop);
         NewStudent.name='';
         NewStudent.age=null;
         NewStudent.lop='';
         trangthai.value='sua';
+        }else{
+            alert('Hãy điền đúng thông tin');
+        }
     }else{
         alert('Hãy điền đủ thông tin');
     }

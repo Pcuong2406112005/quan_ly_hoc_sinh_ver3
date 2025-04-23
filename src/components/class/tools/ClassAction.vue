@@ -10,6 +10,7 @@
 </template>
 <script setup>
 import {ref} from 'vue';
+import { ClassValidate } from '@/components/student/tools/validateStudent.js';
 //eslint-disable-next-line no-undef
 const props=defineProps(['lop','xoalop','sualop'])
 const trangthai=ref('sua');
@@ -19,9 +20,13 @@ const sua=()=>{
 }
 const luu=()=>{
     if(NewClass.value!==''){
+        if(ClassValidate(NewClass.value)){
         props.sualop(props.lop.index,NewClass.value);
         NewClass.value='';
-        trangthai.value='sua';
+        trangthai.value='sua';}
+        else{
+            alert('Hãy điền đúng lớp');
+        }
     }else{
         alert('Hãy điền đủ thông tin');
     }

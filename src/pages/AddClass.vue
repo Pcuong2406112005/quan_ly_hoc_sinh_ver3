@@ -6,14 +6,19 @@
 <script setup>
 import {ref} from 'vue';
 import {useRouter} from 'vue-router';
+import { ClassValidate } from '@/components/student/tools/validateStudent.js';
 const router=useRouter();
 const lopmoi=ref('');
 import {themlop} from '../useInfor';
 const luu=()=>{
     if(lopmoi.value!==''){
+        if(ClassValidate(lopmoi.value)){
         themlop(lopmoi.value);
         lopmoi.value='';
-        router.push('/admin/classlist');
+        router.push('/admin/classlist');}
+        else{
+            alert('Hãy nhập đúng tên lớp')
+        }
     }else{
         alert('Hãy điền đủ thông tin')
     }

@@ -1,7 +1,7 @@
 <template>
     <h1>đây là nơi thêm học sinh</h1>
     <input v-model="NewStudent.name" placeholder="Họ Tên"><br>
-    <input v-model="NewStudent.age" placeholder="Tuổi"><br>
+    <input type="date" v-model="NewStudent.birthday" placeholder="Ngày sinh"><br>
     <select v-model="NewStudent.vitri">
         <option disabled>--Chọn Lớp--</option>
         <option v-for="(lop,index) in infor" :key="index" :value="index">{{ lop.lop }}</option>    
@@ -12,17 +12,23 @@
 import {reactive} from 'vue'
 import {useRouter} from 'vue-router'
 import {infor,themhocsinh} from '../useInfor.js';
+import { nameValidate } from '@/components/student/tools/validateStudent.js';
 const NewStudent=reactive({
-    vitri:null,name:'',age:null
+    vitri:null,name:'',birthday:null
 })
 const router=useRouter();
 const Luu=()=>{
-    if(NewStudent.vitri!==null&&NewStudent.name!==''&&NewStudent.age!==null){
-        themhocsinh(NewStudent.vitri,NewStudent.name,NewStudent.age);
+    if(NewStudent.vitri!==null&&NewStudent.name!==''&&NewStudent.birthday!==null){
+        if(nameValidate(NewStudent.name)){
+        let age=2025-(new Date(NewStudent.birthday)).getFullYear();          
+        themhocsinh(NewStudent.vitri,NewStudent.name,age);
         NewStudent.vitri=null;
         NewStudent.name='';
-        NewStudent.age=null;
+        NewStudent.birthday=null;
         router.push('/admin/studentlist');
+        }else{
+            alert('Bạn đã điền sai tên hoặc tuổi,hãy điền lại');
+        }
     }else{
         alert('Hãy điền đủ thông tin');
     }
