@@ -7,7 +7,7 @@
         </thead>
         <tbody>
             <template v-for="(student,index) in paginatedData" :key="index">
-                <tr v-if="props.search.search===true||(student.lop===props.search.dacdiemtimkiem)">
+                <tr>
                     <td>{{ student.id }}</td>
                     <td>{{ student.name }}</td>
                     <td>{{ student.age }}</td>
@@ -26,16 +26,31 @@
 <script setup>
 import StudentAction from './tools/StudentAction.vue';
 //eslint-disable-next-line no-undef
-const props=defineProps(['flatInfor','search'])
+const props=defineProps(['search'])
 import {computed,ref} from 'vue';
+import { flatInfor } from './tools/FlatStudent.js';
 const PageSize=5;
 const currentPage=ref(0);
+const filterData = computed(() => {
+  return flatInfor.value.filter((student) => {
+    const nameMatch = props.search.name
+      ? student.name.toLowerCase().includes(props.search.name.toLowerCase())
+      : true;
+    const ageMatch = props.search.age
+      ? student.age === parseInt(props.search.age)
+      : true;
+    const lopMatch = props.search.lop
+      ? student.lop === props.search.lop
+      : true;
+    return nameMatch && ageMatch && lopMatch;
+  });
+});
 const paginatedData=computed(()=>{
     const start=currentPage.value*PageSize;
-    return props.flatInfor.slice(start,start + PageSize);
+    return filterData.value.slice(start,start + PageSize);
 });
 const totalPage=computed(()=>
-    Math.ceil(props.flatInfor.length/PageSize)
+    Math.ceil(filterData.value.length/PageSize)
 )    
 const NextPage=()=>{
     currentPage.value=(currentPage.value+1)%totalPage.value;
@@ -47,4 +62,4 @@ const PrevPage=()=>{
         currentPage.value=totalPage.value-1;
     }
 }
-</script>
+</script> 

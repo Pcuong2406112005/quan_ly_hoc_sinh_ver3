@@ -2,41 +2,23 @@
     <h2>Đây là nơi để danh sách học sinh</h2>
     <button @click="Themhocsinh">Thêm Học Sinh</button>
     <StudentSearch @timkiem="timkiem" ></StudentSearch>
-    <StudentTable :search="trangthaitimkiem" :flatInfor="flatInfor" ></StudentTable>
+    <StudentTable :search="search" ></StudentTable>
 </template>    
 <script setup>
 import StudentTable from '../components/student/StudentTable.vue';
 import StudentSearch from '../components/student/StudentSearch.vue';
-import {computed,reactive} from 'vue'
+import {reactive} from 'vue'
 import {useRouter} from 'vue-router'
-import {infor} from '../useInfor.js';
-const flatInfor=computed(()=>infor.flatMap((caclop,index)=>
-    caclop.students.map((student,index1)=>({
-        lop:caclop.lop,
-        name:student.name,
-        age:student.age,
-        index,index1
-    }))
-).map((student,idx)=>({
-    ...student,
-    id:idx+1
-})))
 const router=useRouter();
 const Themhocsinh=()=>{
     router.push('/admin/addstudent');
 }
-const trangthaitimkiem=reactive({
-    search:true,
-    dacdiemtimkiem:''
+const search=reactive({
+    name:'',lop:'',age:null
 })
 const timkiem=(value)=>{
-    if(value===''){
-        trangthaitimkiem.search=true;
-        trangthaitimkiem.dacdiemtimkiem='';
-    }
-    else{
-        trangthaitimkiem.search=false;
-        trangthaitimkiem.dacdiemtimkiem=value;
-    }
+    search.name=value.name;
+    search.age=value.age;
+    search.lop=value.lop;
 }
 </script>
