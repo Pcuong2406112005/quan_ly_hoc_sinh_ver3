@@ -2,7 +2,7 @@
     <table border="1">
         <thead>
             <tr>
-                <td>#</td> <td>Họ Tên</td> <td>Tuổi</td> <td>Lớp</td> <td>Thao Tác</td>
+                <th>#</th> <th>Họ Tên</th> <th>Tuổi</th> <th>Lớp</th> <th>Thao Tác</th>
             </tr>
         </thead>
         <tbody>
@@ -18,7 +18,7 @@
         </tbody>
     </table>
     <div>
-        <button @click="PrevPage">Trang Trước</button>{{ (currentPage+1)+'/'+totalPage }}<button @click="NextPage">Trang Sau</button>
+        <button @click="PrevPage" >Trang Trước</button>{{ (currentPage+1)+'/'+totalPage }}<button @click="NextPage">Trang Sau</button>
     </div>
 </template>
 <script setup>
@@ -35,3 +35,12 @@ const {
     PrevPage
 }=usePagination(flatInfor,props.search);
 </script> 
+<style scoped>
+button{
+    width:90px;
+    height:20px;
+}
+table{
+    border-collapse: collapse;
+}
+</style>

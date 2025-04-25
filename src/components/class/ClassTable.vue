@@ -46,3 +46,8 @@ const PrevPage=()=>{
     }
 }
 </script>
+<style scoped>
+table{
+    border-collapse: collapse;
+}
+</style>

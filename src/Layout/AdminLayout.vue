@@ -1,6 +1,5 @@
 <template>
-    <h1>đây là adminLayout</h1>
-    <button @click="hocsinh">Học Sinh</button><button @click="lop">Lớp</button>
+    <button @click="hocsinh" class="hocsinh">Học Sinh</button><button @click="lop" class="lop">Lớp</button>
     <router-view v-slot="{Component}">
         <component :is="Component" ></component>
     </router-view>
@@ -15,3 +14,20 @@ const lop=()=>{
     router.push('/admin/classlist');
 }
 </script>
+<style scoped>
+button{
+    border:none;
+}
+.hocsinh{
+    background-color: white;
+    color:blue;
+    width: 120px;
+    height: 23px;
+}
+.lop{
+    background-color: rgb(209, 208, 208);
+    color:blue;
+    width: 120px;
+    height: 23px;
+}
+</style>
