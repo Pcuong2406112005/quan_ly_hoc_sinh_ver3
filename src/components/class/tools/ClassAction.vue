@@ -32,3 +32,11 @@ const luu=()=>{
     }
 }
 </script>
+<style scoped>
+button{
+    color:blue;
+    border:none;
+    text-decoration: underline;
+    background: none;
+}
+</style>

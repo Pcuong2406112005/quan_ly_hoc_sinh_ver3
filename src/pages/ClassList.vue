@@ -19,3 +19,10 @@ const themlop=()=>{
     router.push('/admin/addclass');
 }
 </script>
+<style scoped>
+button{
+    background-color: rgb(170, 217, 244);
+    color:blue;
+    border:none;
+}
+</style>

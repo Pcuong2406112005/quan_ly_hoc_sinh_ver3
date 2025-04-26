@@ -24,3 +24,10 @@ const luu=()=>{
     }
 }
 </script>
+<style scoped>
+button{
+    background-color: rgb(170, 217, 244);
+    color:blue;
+    border-radius: 6px;
+}
+</style>

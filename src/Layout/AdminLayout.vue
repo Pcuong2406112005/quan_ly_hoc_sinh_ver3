@@ -1,4 +1,5 @@
 <template>
+    <h1>quan ly hoc sinh ver 3</h1>
     <button @click="hocsinh" class="hocsinh">Học Sinh</button><button @click="lop" class="lop">Lớp</button>
     <router-view v-slot="{Component}">
         <component :is="Component" ></component>

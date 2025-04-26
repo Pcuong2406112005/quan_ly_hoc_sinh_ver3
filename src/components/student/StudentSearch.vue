@@ -1,5 +1,4 @@
 <template>
-    <h2>Tìm Kiếm</h2>
     <select v-model="keywordlop">
         <option :value="''">Tất cả các lớp</option>
         <option v-for="(caclop,index) in infor" :key="index" :value="caclop.lop">{{ caclop.lop }}</option>
