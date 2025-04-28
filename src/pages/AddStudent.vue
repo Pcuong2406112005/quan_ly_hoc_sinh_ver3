@@ -41,3 +41,11 @@ button{
     border-radius: 6px;
 }
 </style>
+<style scoped>
+input,select{
+    width: 10%;
+}
+button{
+    margin-left:6%;
+}
+</style>

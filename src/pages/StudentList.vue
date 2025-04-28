@@ -1,7 +1,6 @@
 <template>
-    <h2>Đây là nơi để danh sách học sinh</h2>
-    <button @click="Themhocsinh">Thêm Học Sinh</button>
     <StudentSearch @timkiem="timkiem" ></StudentSearch>
+    <button @click="Themhocsinh">Thêm Học Sinh</button>
     <StudentTable :search="search" ></StudentTable>
 </template>    
 <script setup>
@@ -27,5 +26,8 @@ button{
     background-color: rgb(170, 217, 244);
     color:blue;
     border:none;
+    display:block;
+    margin-top:10px;
+    margin-left:160px;
 }
 </style>

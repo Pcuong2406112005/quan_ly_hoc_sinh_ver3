@@ -43,4 +43,7 @@ button{
 table{
     border-collapse: collapse;
 }
+td{
+    text-align: center;
+}
 </style>

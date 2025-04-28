@@ -1,6 +1,6 @@
 <template>
     <h1>đây là nơi thêm lớp</h1>
-    <input v-model="lopmoi" placeholder="Lớp"><br>
+    Lớp:<input v-model="lopmoi" placeholder="Lớp"><br>
     <button @click="luu">Lưu</button>
 </template>
 <script setup>
@@ -26,8 +26,13 @@ const luu=()=>{
 </script>
 <style scoped>
 button{
+    margin-top:10px;
     background-color: rgb(170, 217, 244);
     color:blue;
     border-radius: 6px;
+    margin-left:100px;
+}
+input{
+    margin-left:10px;
 }
 </style>
